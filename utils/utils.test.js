@@ -7,10 +7,18 @@ it('should add two numbers', () => {
     expect(result).toBe(44).toBeA('number');
 });
 
-it('should square a number', () => {
-    var result = utils.square(4);
+it('should async add two numbers', (done) => {
+    utils.asyncAdd(4, 3, (sum) => {
+        expect(sum).toBe(7).toBeA('number');
+        done();
+    });
+});
 
-    expect(result).toBe(16).toBeA('number');
+it('should square a number', (done) => {
+    utils.square(4, (squared) => {
+        expect(squared).toBe(16).toBeA('number');
+        done();
+    });
 });
 
 it('should verify first and last names are set', () => {
